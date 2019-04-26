@@ -1,10 +1,13 @@
-#include "chooser.hpp"
-include namespace std;
+#include "Chooser.hpp"
+#include <string>
+using namespace std;
 
-class Guesser: public Chooser
+
+class Guesser
 {
     char[] key_Guesser;
-    int size = 5;
+    string guess();
+    void startNewGame(uint length);
 
 
 

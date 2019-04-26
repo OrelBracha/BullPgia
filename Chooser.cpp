@@ -1,15 +1,18 @@
 #include <iostream>
 #include <stdlib.h>
+#include <string>
 #include "Chooser.hpp"
 using namespace std;
 
-class Chooser
-{
+
+    Chooser::string choose(uint length)
+    {
+        return "";
+    }
+    
 
 
-
-
-    void generatePassword()
+    Chooser::void generatePassword()
     {
         string password = "";
        
@@ -23,4 +26,3 @@ class Chooser
         }
     }
 
-}
