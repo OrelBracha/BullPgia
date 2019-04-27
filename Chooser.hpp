@@ -1,19 +1,18 @@
-#include "Guesser.hpp"
+#pragma once
+#include <iostream>
 #include <string>
 using namespace std;
 #define NUM_OF_DIGITS 10
-
-class Chooser   // Inheritance
+namespace bullpgia
 {
-   char[] key_chooser;
-   bool[] isExist = new bool[NUM_OF_DIGITS];
-   string choose (uint length);
-   void generatePassword(char[] key_chooser);
+ class Chooser  
+ {
+  // char[] key_chooser;//
+   //bool[] isExist = new bool[NUM_OF_DIGITS];
+   public:
+   uint length;
+   virtual std::string choose (uint numOfChars);
+   //void generatePassword(char[] key_chooser);
 
-
-
-
-
-
-
+ };
 }

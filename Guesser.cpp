@@ -11,5 +11,9 @@ using namespace std;
     }
     Guesser::void startNewGame(uint length)
     {
-        
+      cout<<"under construction"<<endl;  
+    }
+    Guesser::void learn(std:string Chars)
+    {
+      cout<<"under construction"<<endl; 
     }
