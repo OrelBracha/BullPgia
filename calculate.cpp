@@ -6,7 +6,8 @@
 
 using namespace std;
 
-
+namespace bullpgia
+{
 //void calculateBullAndPgia()
 
     //Chooser chooser;
@@ -33,7 +34,8 @@ using namespace std;
 
 //}
 
-void calculateBullAndPgia(const std::string choice, const std::string guess)
+const string calculateBullAndPgia(const std::string choice, const std::string guess)
 {
 
+}
 }

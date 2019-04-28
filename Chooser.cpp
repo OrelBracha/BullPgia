@@ -5,7 +5,7 @@
 using namespace std;
 
 
-    Chooser::string choose(uint length)
+    bullpgia::Chooser::string choose(uint length)
     {
         return "";
     }

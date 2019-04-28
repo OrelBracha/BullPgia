@@ -5,15 +5,15 @@
 using namespace std;
 
 
-    Guesser::string guess()
+    bullpgia::Guesser::string guess()
     {
         return "";
     }
-    Guesser::void startNewGame(uint length)
+    bullpgia::Guesser::void startNewGame(uint length)
     {
       cout<<"under construction"<<endl;  
     }
-    Guesser::void learn(std:string Chars)
+    bullpgia::Guesser::void learn(std:string Chars)
     {
       cout<<"under construction"<<endl; 
     }
