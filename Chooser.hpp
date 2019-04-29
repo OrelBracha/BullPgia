@@ -11,7 +11,7 @@ namespace bullpgia
    //bool[] isExist = new bool[NUM_OF_DIGITS];
    public:
    uint length;
-   virtual std::string choose (uint numOfChars);
+   virtual std::string choose (uint numOfChars){return "";};
    //void generatePassword(char[] key_chooser);
 
  };

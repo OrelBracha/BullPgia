@@ -12,9 +12,9 @@ class Guesser
     public:
     uint length;
     //char[] key_Guesser;//
-    virtual std::string guess();
-    virtual void startNewGame(uint size);
-    virtual void learn(std::string chars);
+    virtual std::string guess(){return "";};
+    virtual void startNewGame(uint size){};
+    virtual void learn(std::string chars){};
 
 
 };

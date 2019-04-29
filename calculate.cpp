@@ -36,6 +36,6 @@ namespace bullpgia
 
 const string calculateBullAndPgia(const std::string choice, const std::string guess)
 {
-
+   return "";
 }
 }
