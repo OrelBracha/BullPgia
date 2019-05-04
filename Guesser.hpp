@@ -1,23 +1,25 @@
 #pragma once
 #include <iostream>
-#include <string>
+#include <stdlib.h>
 using namespace std;
+using std::string;
 
-namespace bullpgia
-{
-
-
-class Guesser
-{
-    public:
-    uint length;
-    //char[] key_Guesser;//
-    virtual std::string guess(){return "";};
-    virtual void startNewGame(uint size){};
-    virtual void learn(std::string chars){};
+namespace bullpgia {
 
 
+class Guesser {
+public:
+unsigned int length;   //length
+string bull_pgia; //[Bull,Pgia]
+
+
+
+virtual string guess() = 0;
+virtual void startNewGame(uint length) {
+        length=length;
 };
-
-
+virtual void learn(string results) {
+        this->bull_pgia = results;
+};
+};
 }
