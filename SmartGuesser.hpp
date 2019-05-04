@@ -18,12 +18,8 @@ class SmartGuesser: public bullpgia::Guesser {
 
 
 	public:
-		SmartGuesser()
-    {
-    }
-    ~SmartGuesser()
-    {
-    }
+		SmartGuesser();
+    ~SmartGuesser();
     std::string guess() override;
 		void startNewGame(uint theLength) override;
 		void learn(std::string response) override;

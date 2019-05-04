@@ -8,7 +8,7 @@ using std::string, std::to_string, std::unordered_set;
 
 string bullpgia::SmartGuesser::guess() {
         string answer = "";
-		if(this->pgia<this->length)
+		if(this->pgia < this->length)
 		{
 			for (int i=0;i<length;i++)
 			{
@@ -31,7 +31,7 @@ string bullpgia::SmartGuesser::guess() {
 
 }
 
-bullpgia::SmartGuesser(){
+bullpgia::SmartGuesser::SmartGuesser(){
         for (size_t i = 0; i < 10; i++) {
                 for (size_t j = 0; j < length; j++) {
                         this->choosedString[i]+=to_string(i);
@@ -62,7 +62,25 @@ void bullpgia::SmartGuesser::learn(string results)
 
         int PgiaNum = stoi(pgia);
         int BullNum = stoi(bull);
-
+    if(!founddigit){
+    try
+    {
+      if(x>0){
+        for(int i=0;i<x;i++){
+          solution+=to_string(guesserhelper);
+          }
+    }
+    }catch(const std::exception& e){
+      std::cerr << e.what() << '\n';
+    }
+    bull = x;
+    pgia += x;
+    if(pgia==length&&once){
+      founddigit=true;
+      bull=0,pgia=0,guesserhelper=-1;
+    }
+    guesserhelper++;
+  }
         
 
 }
