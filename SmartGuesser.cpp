@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "permutations.cpp"
 #include "SmartGuesser.hpp"
 #include <math.h>
 #include <algorithm>
@@ -20,7 +21,7 @@ string bullpgia::SmartGuesser::guess() {
 		{
 			if(appearOnce)
 			{
-				vec = getcombi(solution);
+				vec = getcombi(choosedString);
 				appearOnce= false;
 			}
 		 answer = vec[guesserhelper];
@@ -62,21 +63,21 @@ void bullpgia::SmartGuesser::learn(string results)
 
         int PgiaNum = stoi(pgia);
         int BullNum = stoi(bull);
-    if(!founddigit){
+    if(!digitExist){
     try
     {
-      if(x>0){
-        for(int i=0;i<x;i++){
-          solution+=to_string(guesserhelper);
+      if(BullNum>0){
+        for(int i=0;i<BullNum;i++){
+          choosedString+=to_string(guesserhelper);
           }
     }
-    }catch(const std::exception& e){
+    }catch(const std::eBullNumception& e){
       std::cerr << e.what() << '\n';
     }
-    bull = x;
-    pgia += x;
-    if(pgia==length&&once){
-      founddigit=true;
+    bull = BullNum;
+    pgia += BullNum;
+    if(pgia==length&&appearOnce){
+      digitExist=true;
       bull=0,pgia=0,guesserhelper=-1;
     }
     guesserhelper++;
