@@ -11,13 +11,13 @@
  */
 class SmartGuesser: public bullpgia::Guesser {
 	private:
-		std::string Guess="";
-		std::unordered_set<std::string> _set;
-		void Guess_changer();
-		void full_search();
-		void permute(std::string str); 
-		int guess_index=0;
-		std::string tempguess = "";
+		std::string guessing="";
+		std::unordered_set<std::string> mySet;
+		void anotherGuesser();
+		void allPermutations();
+		void createString(std::string str); 
+		int indexOf=0;
+		std::string temporary = "";
 	public:
 		std::string guess() override;
 		void startNewGame(uint Length) override;
