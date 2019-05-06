@@ -1,61 +1,64 @@
-#include <iostream>
 #include "calculate.hpp"
 #include <string>
-#include <cmath>
-#define ZERO_TO_NINE 10
-
-
+#include <stdexcept>
+#include <iostream>
+using std::string, std::to_string;
 using namespace std;
+namespace bullpgia {
+	const string calculateBullAndPgia(const string choosen, const string guess){
+		if(choosen.length() != guess.length()){//if the length are not equals
+        return "0,0";
+		}
 
-namespace bullpgia
-{
+    else{
+    	check(choosen,guess);
+        uint bull = 0;
+        uint pgia = 0;
+ 		char bulled;
+ 		bool count[guess.length()];
+ 		for(uint i=0;i<guess.length();i++){
+ 			count[i]=false;
+ 		}
 
-bool isExist(bool digits[ZERO_TO_NINE] , int num )
-{
-  if(digits[num] == true)
-    return true ;
-  else
-    return false ;
-}
+        for(int i = 0; i<choosen.length(); i++){
+        	bool flag=false;
+				if(choosen[i]==guess[i]){
+					bull++;
+					flag=true;
+					bulled=choosen[i];
+				}
 
-int numOfChars(string str , char ch)
-{
-    int counter = 0 ;
-    for (int i = 0; i < str.length() ; ++i)
-    {
-        if(str[i] == ch)
-            counter++ ;
+				if(!flag){
+                for(int j = 0; j<guess.length(); j++){
+                	if(i!=j){
+                    if(choosen[i]==guess[j]&&choosen[i]!=bulled){
+                    	if(count[j]!=true){
+                            pgia++;
+                            count[j]=true;
+                            break;
+                        }
+                            }
+                    			}
+                	}
+                }
+            }
+        	std::string s=(to_string(bull)+","+to_string(pgia));
+         return s;
     }
-    return counter ;
-}
+	}
+		void check(string a, string b){
+        string nully= "";
 
+			if(a.compare(nully)==0||b.compare(nully)==0)
+				throw invalid_argument("Error: empty!");
 
-const string calculateBullAndPgia(const std::string choice, const std::string guess)
-{
-  int bull = 0 ;
-  int pgia = 0 ;
-  bool digits[ZERO_TO_NINE] ;
-  for(int i = 0 ; i < choice.length() ; i++)
-  {
-    digits[(int) choice[i]] = true ;
-  }
+			for(uint i=0;i<a.length();i++){
+			if(b.at(i)<'0'||b.at(i)>'9')
+				throw invalid_argument("Error: empty!");
 
-
-  for(int i = 0 ; i < choice.length() ; i++)
-  {
-    if(choice[i]== guess[i])
-    {
-      bull++ ;
-    }
-    else
-    {
-        pgia += min(numOfChars(choice , choice[i]) , numOfChars(guess , choice[i])) ;
-    }
-  }
-
-
-  const string result =to_string(bull)+","+to_string(pgia)   ;
-  cout<<result<<endl ;
-  return result ;
-}
-}
+			if(a[i]<'0'||a[i]>'9'){
+				throw std::invalid_argument("Error: not a number!");
+			}
+		}
+	}
+	}

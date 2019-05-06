@@ -20,5 +20,3 @@ class ConstantChooser: public bullpgia::Chooser {
 class RandomChooser: public bullpgia::Chooser {
 		string choose(uint length) override;
 };
-
-
