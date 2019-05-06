@@ -8,13 +8,13 @@
 using std::string, std::to_string, std::unordered_set;
 
 void SmartGuesser::startNewGame(uint Length) {
-  for(int i=0;i<this->length;i++)
-  lastGuess+='0';
+ lastGuess="";
+    mySet.clear();//clear our set if it already full
 	temporary="";
 	indexOf=0;
    this->length=Length;
-	lastGuess="";
-    mySet.clear();
+  for(int i=0;i<this->length;i++)
+  lastGuess+='0';
 
   
 }
@@ -55,19 +55,46 @@ string SmartGuesser::guess()
 
 void SmartGuesser::learn(string res) 
 {
-  unordered_set<string> toRemove;
+  	if(temporary.length()<this->length){
+		int sum = (res.at(0)-'0');
+		for(int i=0;i<sum;i++)
+			temporary+=to_string(indexOf);
+		indexOf++;
+		if(indexOf>9)
+			indexOf=0;
+		anotherGuesser();
+	}
+	else
+	{
+		if(mySet.empty())
+			createString(temporary);
+	
+	char bulls= res.at(0);//checks how many bulls we have
+	unordered_set<string> toRemove;
 	//if number in mySet is not match to the res -> insert it to the remove list
 	for ( auto it = mySet.begin(); it != mySet.end(); ++it ){
-		if (res.compare(bullpgia::calculateBullAndPgia(*it, lastGuess))!=0)
+		  string result = bullpgia::calculateBullAndPgia(*it,lastGuess);
+			
+		if (result.at(0)!=bulls)
 			toRemove.insert(*it);
 	}
 
 	//removes from mySet be toRemve list
 	for ( auto it = toRemove.begin(); it != toRemove.end(); ++it )
 		mySet.erase(*it);	
+
+
+		
+		this->lastGuess= *mySet.begin();
+
+
+
+
 }
 
 
 
 
 
+
+}
