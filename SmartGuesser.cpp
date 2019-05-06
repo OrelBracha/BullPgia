@@ -7,65 +7,16 @@
 
 using std::string, std::to_string, std::unordered_set;
 
-
-string SmartGuesser::guess() 
-{
-
-	return this->guessing;
-}
-
-
 void SmartGuesser::startNewGame(uint Length) {
-	guessing="";
-    mySet.clear();
+  for(int i=0;i<this->length;i++)
+  lastGuess+='0';
 	temporary="";
 	indexOf=0;
    this->length=Length;
-  for(int i=0;i<this->length;i++)
-  guessing+='0';
+	lastGuess="";
+    mySet.clear();
+
   
-}
-
-void SmartGuesser::learn(string res) {
-	if(temporary.length()<this->length){
-		int sum = (res.at(0)-'0');
-		for(int i=0;i<sum;i++)
-			temporary+=to_string(indexOf);
-		indexOf++;
-		if(indexOf>9)
-			indexOf=0;
-		anotherGuesser();
-	}
-	else
-	{
-		if(mySet.empty())
-			createString(temporary);
-	
-	char bulls= res.at(0);
-	
-	unordered_set<string> ErasedSet;
-	for ( auto it = mySet.begin(); it != mySet.end(); it++){
-        string response = bullpgia::calculateBullAndPgia(*it,guessing);
-			
-		if (response.at(0)!=bulls)
-			ErasedSet.insert(*it);	
-	}
-
-	
-	for ( auto it = ErasedSet.begin(); it != ErasedSet.end(); it++)
-		mySet.erase(*it);
-		
-		this->guessing= *mySet.begin();
-	}
-}
-
-
-void SmartGuesser::anotherGuesser(){
-	for(int i=0;i<this->length;i++){
-	
-	guessing.replace(i,i+1,to_string(indexOf));
-	
-	}
 }
 
 void SmartGuesser::createString(string str) 
@@ -79,5 +30,44 @@ void SmartGuesser::createString(string str)
 	  
     } while (std::next_permutation(str.begin(), str.end())); 
 } 
+
+void SmartGuesser::anotherGuesser()
+{
+	for(int i=0;i<this->length;i++)
+	{
+	
+	lastGuess.replace(i,i+1,to_string(indexOf));
+	
+	}
+}
+
+
+
+
+string SmartGuesser::guess() 
+{
+
+	return this->lastGuess;
+}
+
+
+
+
+void SmartGuesser::learn(string res) 
+{
+  unordered_set<string> toRemove;
+	//if number in mySet is not match to the res -> insert it to the remove list
+	for ( auto it = mySet.begin(); it != mySet.end(); ++it ){
+		if (res.compare(bullpgia::calculateBullAndPgia(*it, lastGuess))!=0)
+			toRemove.insert(*it);
+	}
+
+	//removes from mySet be toRemve list
+	for ( auto it = toRemove.begin(); it != toRemove.end(); ++it )
+		mySet.erase(*it);	
+}
+
+
+
 
 

@@ -11,7 +11,7 @@
  */
 class SmartGuesser: public bullpgia::Guesser {
 	private:
-		std::string guessing="";
+		std::string lastGuess="";
 		std::unordered_set<std::string> mySet;
 		void anotherGuesser();
 		void allPermutations();
